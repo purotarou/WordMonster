@@ -2203,7 +2203,7 @@
       const maxWordId = allWordsList.length > 0 ? Math.max(...allWordsList.map(w => w.id)) : 1;
       const minWordId = allWordsList.length > 0 ? Math.min(...allWordsList.map(w => w.id)) : 1;
 
-      const [settingWordCount, setSettingWordCount] = useState(1);
+      const [settingWordCount, setSettingWordCount] = useState(10);
       const [settingTimeLimit, setSettingTimeLimit] = useState(0); 
       const [settingHideMastered, setSettingHideMastered] = useState(false);
       
