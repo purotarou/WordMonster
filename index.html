@@ -3083,19 +3083,19 @@
                     <div className="flex flex-col w-full gap-4">
                       <div className="flex items-center justify-between gap-1 md:gap-2">
                         {/* 左のマイナスボタン群 */}
-                        <div className="flex flex-[1.5] gap-1">
+                        <div className="flex flex-1 gap-1">
                           <button onClick={() => updateWordCount(-100)} disabled={availableWordsCount === 0} className="flex-1 py-5 bg-slate-950 border border-slate-800 rounded-xl text-[11px] md:text-sm font-black text-slate-400 active:scale-90 transition-transform disabled:opacity-50">-100</button>
                           <button onClick={() => updateWordCount(-10)} disabled={availableWordsCount === 0} className="flex-1 py-5 bg-slate-950 border border-slate-800 rounded-xl text-[11px] md:text-sm font-black text-slate-400 active:scale-90 transition-transform disabled:opacity-50">-10</button>
                           <button onClick={() => updateWordCount(-1)} disabled={availableWordsCount === 0} className="flex-1 py-5 bg-slate-950 border border-slate-800 rounded-xl text-[11px] md:text-sm font-black text-slate-400 active:scale-90 transition-transform disabled:opacity-50">-1</button>
                         </div>
                         
                         {/* 中央の数値 */}
-                        <div className={`text-3xl md:text-4xl font-black w-14 md:w-20 text-center ${selectedPart === 'test' ? 'text-indigo-400' : 'text-sky-400'}`}>
+                        <div className={`text-3xl md:text-4xl font-black w-20 md:w-24 text-center shrink-0 ${selectedPart === 'test' ? 'text-indigo-400' : 'text-sky-400'}`}>
                           {availableWordsCount === 0 ? 0 : displayWordCount}
                         </div>
-
+                    
                         {/* 右のプラスボタン群 */}
-                        <div className="flex flex-[1.5] gap-1">
+                        <div className="flex flex-1 gap-1">
                           <button onClick={() => updateWordCount(1)} disabled={availableWordsCount === 0} className="flex-1 py-5 bg-slate-950 border border-slate-800 rounded-xl text-[11px] md:text-sm font-black text-slate-400 active:scale-90 transition-transform disabled:opacity-50">+1</button>
                           <button onClick={() => updateWordCount(10)} disabled={availableWordsCount === 0} className="flex-1 py-5 bg-slate-950 border border-slate-800 rounded-xl text-[11px] md:text-sm font-black text-slate-400 active:scale-90 transition-transform disabled:opacity-50">+10</button>
                           <button onClick={() => updateWordCount(100)} disabled={availableWordsCount === 0} className="flex-1 py-5 bg-slate-950 border border-slate-800 rounded-xl text-[11px] md:text-sm font-black text-slate-400 active:scale-90 transition-transform disabled:opacity-50">+100</button>
