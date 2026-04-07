@@ -2589,6 +2589,35 @@
         return newArray;
       };
 
+      const sortWordsByPriority = (wordsList) => {
+        // まず全体をシャッフルして、同じ優先度の単語が毎回違う順番になるようにする
+        const shuffled = shuffleArray(wordsList);
+        
+        // 優先度ルールに従って並び替える
+        return shuffled.sort((a, b) => {
+          const progA = userProgress[a.id] || { consecutive_correct: 0, required_streak: REQUIRED_STREAK };
+          const progB = userProgress[b.id] || { consecutive_correct: 0, required_streak: REQUIRED_STREAK };
+          
+          const correctA = progA.consecutive_correct || 0;
+          const correctB = progB.consecutive_correct || 0;
+          
+          const reqA = progA.required_streak || REQUIRED_STREAK;
+          const reqB = progB.required_streak || REQUIRED_STREAK;
+
+          // ルール1: 連続正解数 (consecutive_correct) が小さい方を優先
+          if (correctA !== correctB) {
+            return correctA - correctB;
+          }
+          
+          // ルール2: 上限値 (required_streak) が小さい方を優先 (3の方を5より優先)
+          if (reqA !== reqB) {
+            return reqA - reqB;
+          }
+          
+          return 0; // 条件が同じ場合はシャッフルされた順序を維持
+        });
+      };
+      
       const startLearning = (partId) => {
         playSound('start');
         setSelectedPart(partId);
