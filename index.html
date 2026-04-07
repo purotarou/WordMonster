@@ -2625,9 +2625,9 @@
           const sId = Number(settingStartId) || 1;
           const eId = Number(settingEndId) || 50;
           const list = allWordsList.filter(w => w.id >= sId && w.id <= eId);
-          setShuffledWords(shuffleArray(list));
+          setShuffledWords(sortWordsByPriority(list));
         } else {
-          setShuffledWords(shuffleArray(wordData[partId] || []));
+          setShuffledWords(sortWordsByPriority(wordData[partId] || []));
         }
         setCurrentIndex(0);
         setKnownCount(0);
@@ -2668,7 +2668,7 @@
           list = list.filter(w => !userProgress[w.id] || userProgress[w.id].status !== 2);
         }
         
-        list = shuffleArray(list);
+        list = sortWordsByPriority(list);
         list = list.slice(0, settingWordCount);
         
         setShuffledWords(list);
@@ -2686,7 +2686,7 @@
       const restartCurrentSession = () => {
         playSound('start');
         // 直前の単語リストをそのままシャッフルして再開
-        setShuffledWords(shuffleArray([...shuffledWords]));
+        setShuffledWords(sortWordsByPriority([...shuffledWords]));
         setCurrentIndex(0);
         setKnownCount(0);
         setUnknownCount(0);
